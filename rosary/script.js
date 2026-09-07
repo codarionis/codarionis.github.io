@@ -61,8 +61,8 @@ that by meditating upon these mysteries of the Most Holy Rosary of the Blessed V
 we may imitate what they contain and obtain what they promise,  
 through the same Christ our Lord. Amen.`,
 
-//New prayers added for the deceased mode
-  forDeceasedIntention: `<strong>V.</strong> Let us offer this Holy Rosary for the eternal rest of (name).<br>
+//New prayers added for the departed mode
+  forDepartedIntention: `<strong>V.</strong> Let us offer this Holy Rosary for the eternal rest of (name).<br>
 <strong>R.</strong> May the Lord guide our thoughts, bless our words, and fill our hearts.`,
 
   prayerForTheFaithfulDeparted: `<strong>V.</strong> Eternal rest grant unto (him/her), O Lord.<br>
@@ -202,7 +202,7 @@ through the same Christ our Lord. Amen.`,
 <strong>V.</strong> Grant, we beseech Thee, O Lord God, that we Thy Servants may enjoy perpetual health of mind and body and by the glorious intercession of the Blessed Mary, ever Virgin, be delivered from present sorrow and enjoy eternal happiness.<br>
 <strong>R.</strong> Through Christ Our Lord. Amen.`,
 
-  concludingPrayerForTheDeceased: `Lord, in Your mercy, hear our prayer for the soul of (name). May (he/she) rest in Your peace and rise with You in glory. Amen.`,
+  concludingPrayerForTheDeparted: `Lord, in Your mercy, hear our prayer for the soul of (name). May (he/she) rest in Your peace and rise with You in glory. Amen.`,
 
 //New prayers added for the one decade mode
   yourIntention: `State your personal intention for this rosary.`
@@ -356,10 +356,10 @@ const titles = {
     closingDialogue: "Closing Dialogue",
     closingPrayer: "Closing Prayer",
     signOfTheCross: "Sign of the Cross",
-    forDeceasedIntention: "Intention",
+    forDepartedIntention: "Intention",
     prayerForTheFaithfulDeparted: "Prayer For The Faithful Departed",
     litanyOfTheBlessedVirginMary: "Litany Of The Blessed Virgin Mary",
-    concludingPrayerForTheDeceased: "Concluding Prayer For The Deceased",
+    concludingPrayerForTheDeparted: "Concluding Prayer For The Departed",
     yourIntention: "Your Personal Intention"
   },
   vi: {
@@ -1170,13 +1170,13 @@ function renderPrayers() {
       </div>`;
     });
 
-  } else if (lang === "en" && mode === "forDeceased") {
-    // PRAYER ORDER FOR DECEASED MODE (your existing code)
+  } else if (lang === "en" && mode === "forDeparted") {
+    // PRAYER ORDER FOR DEPARTED MODE (your existing code)
     // Opening prayers with single beads
     const openingPrayers = [
       { title: t.signOfTheCross, content: prayers[lang].signOfTheCross },
       { title: t.apostlesCreed, content: prayers[lang].apostlesCreed },
-      { title: t.forDeceasedIntention, content: prayers[lang].forDeceasedIntention },
+      { title: t.forDepartedIntention, content: prayers[lang].forDepartedIntention },
       { title: t.prayerForTheFaithfulDeparted, content: prayers[lang].prayerForTheFaithfulDeparted },
       { title: t.ourFather, content: prayers[lang].ourFather },
       { title: t.threeHailMarys, content: prayers[lang].hailMary },
@@ -1273,7 +1273,7 @@ function renderPrayers() {
       { name: "closingDialogue", title: t.closingDialogue, content: prayers[lang].closingDialogue },
       { name: "closingPrayer", title: t.closingPrayer, content: prayers[lang].closingPrayer },
       { name: "litanyOfTheBlessedVirginMary", title: t.litanyOfTheBlessedVirginMary, content: prayers[lang].litanyOfTheBlessedVirginMary },
-      { name: "concludingPrayerForTheDeceased", title: t.concludingPrayerForTheDeceased, content: prayers[lang].concludingPrayerForTheDeceased },
+      { name: "concludingPrayerForTheDeparted", title: t.concludingPrayerForTheDeparted, content: prayers[lang].concludingPrayerForTheDeparted },
       { name: "closingSignOfCross", title: t.signOfTheCross, content: prayers[lang].signOfTheCross }
     ];
 
@@ -1500,7 +1500,7 @@ function attachBeadListeners() {
     });
   });
 
-  // single green beads (hailHolyQueen, closingDialogue, closingPrayer, closingSignOfCross, litanyOfTheBlessedVirginMary, concludingPrayerForTheDeceased)
+  // single green beads (hailHolyQueen, closingDialogue, closingPrayer, closingSignOfCross, litanyOfTheBlessedVirginMary, concludingPrayerForTheDeparted)
   document.querySelectorAll(".bead[data-type='singleGreen']").forEach(bead => {
     const name = bead.getAttribute("data-name");
     bead.addEventListener("click", () => {
@@ -1509,7 +1509,7 @@ function attachBeadListeners() {
     });
   });
 
-  // single bead for prayerForTheFaithfulDeparted in mysteries section in deceased mode
+  // single bead for prayerForTheFaithfulDeparted in mysteries section in departed mode
   document.querySelectorAll(".bead[data-type='singleNew']").forEach(bead => {
     bead.addEventListener("click", () => {
       bead.classList.toggle("active");
@@ -1566,4 +1566,3 @@ toggleBeadsBtn.addEventListener("click", () => {
   const beadsVisible = prayersDiv.classList.toggle("hide-beads");
   toggleBeadsBtn.textContent = beadsVisible ? "Show Beads" : "Hide Beads";
 });
-
